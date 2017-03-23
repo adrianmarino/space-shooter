@@ -30,12 +30,12 @@ public class PlayerSpacecraft : GameElement
 
 	private void logDirectionVector (float x, float y)
 	{
-		Debug.Log (string.Format ("Direction Vector=({0}, {1})", x, y));
+		Debug.Log (string.Format ("Direction=({0}, {1})", Math.Round (x, 1), Math.Round (y, 1)));
 	}
 
 	private void logPosition (Vector3 position)
 	{
-		Debug.Log (string.Format ("Position=({0}, {1})", position.x, position.z));
+		Debug.Log (string.Format ("Position=({0}, {1})", Math.Round (position.x, 1), Math.Round (position.z, 1)));
 	}
 
 	//-----------------------------------------------------------------------------
