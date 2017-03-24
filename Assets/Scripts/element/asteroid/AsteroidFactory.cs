@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SpaceShooter;
-using NUnit.Framework;
 using System.Collections.Generic;
 using SpaceShooter.Core;
 

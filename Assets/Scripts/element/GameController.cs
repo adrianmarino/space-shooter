@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SpaceShooter;
 using SpaceShooter.Core;
-using UnityEditor.AnimatedValues;
 
 namespace SpaceShooter
 {
@@ -10,7 +10,20 @@ namespace SpaceShooter
 	{
 		void Start ()
 		{
-			asteriodFactory.instanciateWave (asteriods, AsteroidWaveSize);
+			StartCoroutine (nextAsteroidWave ());
+		}
+
+		//-----------------------------------------------------------------------------
+		// Private Methods
+		//-----------------------------------------------------------------------------
+
+		private IEnumerator nextAsteroidWave ()
+		{
+			yield return new WaitForSeconds (AsteroidWaveWait);
+			while (true) {
+				asteriodFactory.instanciateWave (asteriods, AsteroidWaveSize);
+				yield return new WaitForSeconds (AsteroidWaveWait);
+			}
 		}
 
 		//-----------------------------------------------------------------------------
@@ -32,6 +45,11 @@ namespace SpaceShooter
 			set { asteriods = value; }
 		}
 
+		public float AsteroidWaveWait {
+			get { return asteroidWaveWait; }
+			set { asteroidWaveWait = value; }
+		}
+
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
@@ -43,6 +61,9 @@ namespace SpaceShooter
 		private int asteroidWaveSize;
 
 		[SerializeField]
+		private float asteroidWaveWait;
+
+		[SerializeField]
 		private List<GameObject> asteriods;
 
 		//-----------------------------------------------------------------------------
@@ -52,6 +73,7 @@ namespace SpaceShooter
 		public GameController ()
 		{
 			asteroidWaveSize = 1;
+			asteroidWaveWait = 2f;
 		}
 	}
 }
