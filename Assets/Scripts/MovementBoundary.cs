@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Boundary
+public class MovementBoundary
 {
 
 	public Vector3 clamp (Vector3 vector)
@@ -44,7 +44,7 @@ public class Boundary
 	// Constructors
 	//-----------------------------------------------------------------------------
 
-	public Boundary ()
+	public MovementBoundary ()
 	{
 		this.Xmin = 0f;
 		this.Xmax = 0f;

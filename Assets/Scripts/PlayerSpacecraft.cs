@@ -22,8 +22,8 @@ public class PlayerSpacecraft : GameElement
 		velocity (Vector.create (x, y) * Speed);
 		position (boundary.clamp (position ()));
 
-		logDirectionVector (x, y);
-		logPosition (position ());
+		// logDirectionVector (x, y);
+		// logPosition (position ());
 
 		rotate (Quaternion.Euler (0.0f, 0.0f, velocity ().x * -tilt));
 	}
@@ -52,7 +52,7 @@ public class PlayerSpacecraft : GameElement
 		set { tilt = value; }
 	}
 
-	public Boundary Boundary {
+	public MovementBoundary Boundary {
 		get { return boundary; }
 		set { boundary = value; }
 	}
@@ -68,7 +68,7 @@ public class PlayerSpacecraft : GameElement
 	private float tilt;
 
 	[SerializeField]
-	private Boundary boundary;
+	private MovementBoundary boundary;
 
 	//-----------------------------------------------------------------------------
 	// Constructors
@@ -78,6 +78,6 @@ public class PlayerSpacecraft : GameElement
 	{
 		this.speed = 15;
 		this.tilt = 4;
-		this.boundary = new Boundary ();
+		this.boundary = new MovementBoundary ();
 	}
 }
