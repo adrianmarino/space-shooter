@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpaceShooter;
 using SpaceShooter.Core;
-using UnityEditorInternal;
-using System;
 
 namespace SpaceShooter
 {

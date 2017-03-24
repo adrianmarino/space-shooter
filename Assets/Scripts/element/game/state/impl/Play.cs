@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using SpaceShooter;
-using SpaceShooter.Core;
+﻿using SpaceShooter;
 
 namespace SpaceShooter
 {
