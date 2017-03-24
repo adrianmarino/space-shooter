@@ -13,6 +13,7 @@ public class Asteroir : GameElement
 		Destroy (other.gameObject);
 		// Destroy own object.
 		Destroy (gameObject);
+		Debug.Log (gameObject.tag + " destroyed!");
 	}
 
 	void Start ()

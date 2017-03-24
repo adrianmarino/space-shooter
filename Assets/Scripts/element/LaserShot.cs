@@ -5,7 +5,7 @@ using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
-	public class Mover : GameElement
+	public class LaserShot : GameElement
 	{
 		void Start ()
 		{

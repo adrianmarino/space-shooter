@@ -11,10 +11,10 @@ namespace SpaceShooter
 		public void updatePosition (MovableElement element, Vector2 direction)
 		{
 			element.velocity (Util.Vector3.create (direction.x, direction.y) * element.Speed);
-			logDirectionVector (direction.x, direction.y);
+			// logDirectionVector (direction.x, direction.y);
 
 			element.position (Boundary.clamp (element.position ()));
-			logPosition (element.position ());
+			// logPosition (element.position ());
 		}
 
 		//-----------------------------------------------------------------------------
