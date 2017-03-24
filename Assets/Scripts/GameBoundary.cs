@@ -7,22 +7,12 @@ namespace SpaceShooter
 {
 	public class GameBoundary : GameElement
 	{
-		void OnTriggerExit (Collider otherCollider)
+		void OnTriggerExit (Collider other)
 		{
-			if (Util.GameObject.hasName (otherCollider.gameObject, Player))
+			if (other.tag == Player)
 				return;
-
-			destroyObjectLog (otherCollider.gameObject);
-			Destroy (otherCollider.gameObject);
-		}
-
-		//-----------------------------------------------------------------------------
-		// Private Methods
-		//-----------------------------------------------------------------------------
-
-		private void destroyObjectLog (GameObject gameObject)
-		{
-			Debug.Log (string.Format ("Destroy {0}!", Util.GameObject.originalName (gameObject)));
+			Debug.Log (string.Format ("{0} out of boundary!", other.tag));
+			Destroy (other.gameObject);
 		}
 
 		//-----------------------------------------------------------------------------
