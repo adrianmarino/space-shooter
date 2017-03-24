@@ -62,13 +62,13 @@ public class PlayerSpacecraft : GameElement
 	//-----------------------------------------------------------------------------
 
 	[SerializeField]
-	public float speed;
+	private float speed;
 
 	[SerializeField]
-	public float tilt;
+	private float tilt;
 
 	[SerializeField]
-	public Boundary	boundary;
+	private Boundary boundary;
 
 	//-----------------------------------------------------------------------------
 	// Constructors
