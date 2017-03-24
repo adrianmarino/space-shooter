@@ -9,7 +9,7 @@ namespace SpaceShooter
 	{
 		void Start ()
 		{
-			getRigidbody ().velocity = transform.forward * speed;
+			applyVelocity (Speed);
 		}
 
 		//-----------------------------------------------------------------------------
@@ -25,6 +25,7 @@ namespace SpaceShooter
 		// Attributes
 		//-----------------------------------------------------------------------------
 
-		public float speed;
+		[SerializeField]
+		private float speed;
 	}
 }

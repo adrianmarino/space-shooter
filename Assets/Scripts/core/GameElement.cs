@@ -34,5 +34,10 @@ namespace SpaceShooter.Core
 		{
 			return GetComponent<Rigidbody> ();
 		}
+
+		protected void applyVelocity (float speed)
+		{
+			velocity (transform.forward * speed);
+		}
 	}
 }
