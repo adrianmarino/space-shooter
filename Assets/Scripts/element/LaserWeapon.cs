@@ -8,7 +8,7 @@ namespace SpaceShooter
 	{
 		void Update ()
 		{
-			if (Input.GetButton ("Jump") && Time.time > nextShot) {
+			if (Input.GetKeyDown (KeyCode.LeftControl) && Time.time > nextShot) {
 				nextShot = Time.time + ShotRate;
 				Instantiate (LaserShot, transform.position, transform.rotation);
 			}
