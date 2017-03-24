@@ -7,6 +7,8 @@ public class Asteroir : GameElement
 {
 	void OnTriggerEnter (Collider other)
 	{
+		if (other.tag == "Boundary")
+			return;
 		// Destroy object that inpect with own object.
 		Destroy (other.gameObject);
 		// Destroy own object.
