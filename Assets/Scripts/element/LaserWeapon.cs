@@ -8,7 +8,7 @@ namespace SpaceShooter
 	{
 		void Update ()
 		{
-			if (Input.GetButton (ButtonName) && Time.time > nextShot) {
+			if (Input.GetButton ("Jump") && Time.time > nextShot) {
 				nextShot = Time.time + ShotRate;
 				Instantiate (LaserShot, transform.position, transform.rotation);
 			}
@@ -28,11 +28,6 @@ namespace SpaceShooter
 			set { shotRate = value; }
 		}
 
-		public string ButtonName {
-			get { return buttonName; }
-			set { buttonName = value; }
-		}
-
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
@@ -42,9 +37,6 @@ namespace SpaceShooter
 
 		[SerializeField]
 		private float shotRate;
-
-		[SerializeField]
-		private string buttonName;
 
 		[SerializeField]
 		private float nextShot;
@@ -57,7 +49,6 @@ namespace SpaceShooter
 		{
 			shotRate = 0.25f;
 			nextShot = 0.0f;
-			buttonName = "Jump";
 		}
 	}
 }

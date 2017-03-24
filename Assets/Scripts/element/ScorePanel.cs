@@ -12,6 +12,11 @@ namespace SpaceShooter
 			currentScore = currentScore + value;
 		}
 
+		public void reset ()
+		{
+			currentScore = 0;
+		}
+
 		void Update ()
 		{
 			update (currentScore);

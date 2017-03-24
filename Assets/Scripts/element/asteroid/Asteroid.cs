@@ -20,14 +20,6 @@ namespace SpaceShooter
 			applyVelocity (Speed);
 		}
 
-		public static void instanciate (GameObject obj, float xPosition, float yPosition)
-		{
-			Vector3 position = Util.Vector3.create (xPosition, yPosition);
-			Quaternion rotation = Quaternion.identity;
-
-			Instantiate (obj, position, rotation);
-		}
-
 		//-----------------------------------------------------------------------------
 		// Private Methods
 		//-----------------------------------------------------------------------------
@@ -35,11 +27,17 @@ namespace SpaceShooter
 		private void destroyObjects (Collider other)
 		{	
 			Instantiate (explosion, transform.position, transform.rotation);
-			if (other.tag == "Player")
-				Instantiate (playerExplosion, other.transform.position, other.transform.rotation);
 
 			destroy (other.gameObject);
 			destroy (gameObject);
+
+			if (other.tag == "Spacecraft") {
+				Instantiate (playerExplosion, other.transform.position, other.transform.rotation);
+				GameElement.instance<Game> ("Game").Finish ();
+			}
+			if (other.tag == "LaserShot") {
+				GameElement.instance<ScorePanel> ("ScorePanel").addScore (10);
+			}
 		}
 
 		private void setVerticalRotation ()
@@ -80,9 +78,17 @@ namespace SpaceShooter
 			}
 		}
 
+		public ScorePanel ScorePanel {
+			get { return scorePanel; }
+			set { scorePanel = value; }
+		}
+
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
+
+		[SerializeField]
+		private ScorePanel scorePanel;
 
 		[SerializeField]
 		private float speed;

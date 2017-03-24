@@ -5,6 +5,21 @@ namespace SpaceShooter.Core
 {
 	public abstract class GameElement : MonoBehaviour
 	{
+		public static ELEMENT instance<ELEMENT> (string name)
+		{
+			GameObject gameObject = GameObject.FindWithTag (name);
+			if (gameObject == null)
+				throw new Exception ("Cannot find " + name + " object!");
+			return gameObject.GetComponent <ELEMENT> ();
+		}
+
+		public static void instanciate (GameObject obj, float xPosition, float yPosition)
+		{
+			Vector3 position = Util.Vector3.create (xPosition, yPosition);
+			Quaternion rotation = Quaternion.identity;
+			Instantiate (obj, position, rotation);
+		}
+
 		public void velocity (Vector3 vector)
 		{
 			getRigidbody ().velocity = vector;
