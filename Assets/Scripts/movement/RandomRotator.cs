@@ -5,33 +5,20 @@ using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
-	public class GameBoundary : GameElement
+	public class RandomRotator : GameElement
 	{
-		void OnTriggerExit (Collider otherCollider)
+		void Start ()
 		{
-			if (Util.GameObject.hasName (otherCollider.gameObject, Player))
-				return;
-
-			destroyObjectLog (otherCollider.gameObject);
-			Destroy (otherCollider.gameObject);
-		}
-
-		//-----------------------------------------------------------------------------
-		// Private Methods
-		//-----------------------------------------------------------------------------
-
-		private void destroyObjectLog (GameObject gameObject)
-		{
-			Debug.Log (string.Format ("Destroy {0}!", Util.GameObject.originalName (gameObject)));
+			getRigidbody ().angularVelocity = Random.insideUnitSphere * tumble;
 		}
 
 		//-----------------------------------------------------------------------------
 		// Properties
 		//-----------------------------------------------------------------------------
 
-		public string Player {
-			get { return player; }
-			set { player = value; }
+		public float Tumble {
+			get { return tumble; }
+			set { tumble = value; }
 		}
 
 		//-----------------------------------------------------------------------------
@@ -39,6 +26,15 @@ namespace SpaceShooter
 		//-----------------------------------------------------------------------------
 
 		[SerializeField]
-		private string player;
+		private float tumble;
+
+		//-----------------------------------------------------------------------------
+		// Constructors
+		//-----------------------------------------------------------------------------
+
+		public RandomRotator ()
+		{
+			this.tumble = 3;
+		}
 	}
 }
