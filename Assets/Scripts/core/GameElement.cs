@@ -5,6 +5,13 @@ namespace SpaceShooter.Core
 {
 	public abstract class GameElement : MonoBehaviour
 	{
+
+		public static void destroyAllByTag (string tag)
+		{
+			foreach (GameObject element in GameObject.FindGameObjectsWithTag (tag))
+				Destroy (element);
+		}
+
 		public static ELEMENT instance<ELEMENT> (string name)
 		{
 			GameObject gameObject = GameObject.FindWithTag (name);

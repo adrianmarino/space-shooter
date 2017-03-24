@@ -20,6 +20,11 @@ namespace SpaceShooter
 			applyVelocity (Speed);
 		}
 
+		public static void destroyAll ()
+		{
+			GameElement.destroyAllByTag ("Asteroid");
+		}
+
 		//-----------------------------------------------------------------------------
 		// Private Methods
 		//-----------------------------------------------------------------------------

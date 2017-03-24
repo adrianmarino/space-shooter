@@ -9,32 +9,9 @@ namespace SpaceShooter
 	[System.Serializable]
 	public class AsteroidFactory : GameElement
 	{
-		public void instanciateWave (List<GameObject> asteroids, int sizeByElement)
-		{
-			for (int i = 0; i < sizeByElement; i++)
-				instanciate (asteroids);
-		}
-
-		public void instanciate (List<GameObject> asteroids)
-		{
-			StartCoroutine (instanciateRoutine (asteroids));
-		}
-
 		public void instanciate (GameObject asteroid)
 		{
 			Asteroid.instanciate (asteroid, Random.Range (MinX, MaxX), InitialY);
-		}
-
-		//-----------------------------------------------------------------------------
-		// Private Methods
-		//-----------------------------------------------------------------------------
-
-		private IEnumerator instanciateRoutine (List<GameObject> asteroids)
-		{
-			foreach (GameObject asteroid in asteroids) {
-				instanciate (asteroid);
-				yield return new WaitForSeconds (SpawnWait);
-			}
 		}
 
 		//-----------------------------------------------------------------------------

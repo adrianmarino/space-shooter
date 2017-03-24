@@ -55,8 +55,14 @@ namespace SpaceShooter
 			generateAsteroids = true;
 			yield return new WaitForSeconds (AsteroidWaveWait);
 			while (generateAsteroids) {
-				AsteriodFactory.instanciateWave (Asteriods, AsteroidWaveSize);
-				yield return new WaitForSeconds (AsteroidWaveWait);
+				for (int i = 0; i < AsteroidWaveSize; i++) {
+					foreach (GameObject asteroid in Asteriods) {
+						asteriodFactory.instanciate (asteroid);
+						yield return new WaitForSeconds (AsteroidWaveWait);
+						if (!generateAsteroids)
+							Asteroid.destroyAll ();
+					}
+				}
 			}
 		}
 
