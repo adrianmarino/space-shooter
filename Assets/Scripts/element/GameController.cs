@@ -10,45 +10,26 @@ namespace SpaceShooter
 	{
 		void Start ()
 		{
-			generateAsteriodWaves ();
-		}
-
-		//-----------------------------------------------------------------------------
-		// Private Methods
-		//-----------------------------------------------------------------------------
-
-		private void generateAsteriodWaves ()
-		{
-			Asteroid.instanciate (Asteriod, randomX (), AsteriodInitialY);
-		}
-
-		float randomX ()
-		{
-			return Random.Range (AsteriodMinX, asteriodMaxX);
+			asteriodFactory.instanciateWave (asteriods, AsteroidWaveSize);
 		}
 
 		//-----------------------------------------------------------------------------
 		// Properties
 		//-----------------------------------------------------------------------------
 
-		public GameObject Asteriod {
-			get { return asteriod; }
-			set { asteriod = value; }
+		public AsteroidFactory AsteriodFactory {
+			get { return asteriodFactory; }
+			set { asteriodFactory = value; }
 		}
 
-		public float AsteriodMaxX {
-			get { return asteriodMaxX; }
-			set { asteriodMaxX = value; }
+		public int AsteroidWaveSize {
+			get { return asteroidWaveSize; }
+			set { asteroidWaveSize = value; }
 		}
 
-		public float AsteriodMinX {
-			get { return asteriodMinX; }
-			set { asteriodMinX = value; }
-		}
-
-		public float AsteriodInitialY {
-			get { return asteriodInitialY; }
-			set { asteriodInitialY = value; }
+		public List<GameObject> Asteriods {
+			get { return asteriods; }
+			set { asteriods = value; }
 		}
 
 		//-----------------------------------------------------------------------------
@@ -56,13 +37,13 @@ namespace SpaceShooter
 		//-----------------------------------------------------------------------------
 
 		[SerializeField]
-		private float asteriodMinX, asteriodMaxX;
+		private AsteroidFactory asteriodFactory;
 
 		[SerializeField]
-		private float asteriodInitialY;
+		private int asteroidWaveSize;
 
 		[SerializeField]
-		private GameObject asteriod;
+		private List<GameObject> asteriods;
 
 		//-----------------------------------------------------------------------------
 		// Constructors
@@ -70,9 +51,7 @@ namespace SpaceShooter
 
 		public GameController ()
 		{
-			AsteriodInitialY = 0;
-			AsteriodMinX = 0;
-			AsteriodMaxX = 0;
+			asteroidWaveSize = 1;
 		}
 	}
 }

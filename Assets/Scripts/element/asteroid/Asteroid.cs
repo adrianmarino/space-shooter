@@ -9,7 +9,7 @@ namespace SpaceShooter
 	{
 		void OnTriggerEnter (Collider other)
 		{
-			if (other.tag == "Boundary")
+			if (other.tag == "GameArea")
 				return;
 			destroyObjects (other);
 		}
@@ -20,11 +20,12 @@ namespace SpaceShooter
 			applyVelocity (Speed);
 		}
 
-		public static void instanciate (GameObject asteriod, float x, float y)
+		public static void instanciate (GameObject obj, float xPosition, float yPosition)
 		{
-			Vector3 position = Util.Vector3.create (x, y);
+			Vector3 position = Util.Vector3.create (xPosition, yPosition);
 			Quaternion rotation = Quaternion.identity;
-			Instantiate (asteriod, position, rotation);
+
+			Instantiate (obj, position, rotation);
 		}
 
 		//-----------------------------------------------------------------------------
@@ -46,7 +47,7 @@ namespace SpaceShooter
 			getRigidbody ().angularVelocity = Random.insideUnitSphere * tumble;
 		}
 
-		private void destroy (GameObject gameObject)
+		private static void destroy (GameObject gameObject)
 		{
 			Destroy (gameObject);
 			Debug.Log (gameObject.tag + " destroyed!");
@@ -102,7 +103,7 @@ namespace SpaceShooter
 		public Asteroid ()
 		{
 			tumble = 3;
-			speed = 1;
+			speed = -4;
 		}
 	}
 }

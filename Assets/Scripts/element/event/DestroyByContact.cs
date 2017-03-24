@@ -5,11 +5,11 @@ using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
-	public class GameArea : GameElement
+	public class DestroyByContact : GameElement
 	{
 		void OnTriggerExit (Collider other)
 		{
-			// Debug.Log (string.Format ("{0} out of boundary!", other.tag));
+			Debug.Log (string.Format ("{0} out of game area!", other.tag));
 			Destroy (other.gameObject);
 		}
 	}
