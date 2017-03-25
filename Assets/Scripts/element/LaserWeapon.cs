@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
-using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
-	public class LaserWeapon : GameElement
+	public class LaserWeapon : Core.GameElement
 	{
 		void Update ()
 		{

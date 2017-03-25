@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using SpaceShooter;
-using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
 	[System.Serializable]
-	public class AsteroidFactory : GameElement
+	public class AsteroidFactory : Core.GameElement
 	{
 		public void instanciate (GameObject asteroid)
 		{

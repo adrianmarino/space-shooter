@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
-	public class DestroyByContact : GameElement
+	public class DestroyByContact : Core.GameElement
 	{
 		void OnTriggerExit (Collider other)
 		{

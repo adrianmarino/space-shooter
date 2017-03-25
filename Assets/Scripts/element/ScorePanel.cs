@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using SpaceShooter.Core;
+﻿using UnityEngine;
 
 namespace SpaceShooter
 {
-	public class ScorePanel : GameElement
+	public class ScorePanel : Core.GameElement
 	{
 		public void addScore (long value)
 		{

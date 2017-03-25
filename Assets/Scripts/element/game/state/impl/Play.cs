@@ -11,12 +11,12 @@ namespace SpaceShooter
 			target.cleanRestartText ();
 
 			target.instanciateSpacecraft ();
-			target.beginAsteroidsGeneration ();
+			target.AsteroidGenerator.start ();
 		}
 
 		public override void finish ()
 		{
-			target.finishAsteroidsGeneration ();
+			target.AsteroidGenerator.stop ();
 			target.finish ();
 		}
 

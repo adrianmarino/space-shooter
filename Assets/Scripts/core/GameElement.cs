@@ -1,10 +1,14 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 namespace SpaceShooter.Core
 {
 	public abstract class GameElement : MonoBehaviour
 	{
+		//-----------------------------------------------------------------------------
+		// Public Static Methods
+		//-----------------------------------------------------------------------------
 
 		public static void destroyAllByTag (string tag)
 		{
@@ -26,6 +30,10 @@ namespace SpaceShooter.Core
 			Quaternion rotation = Quaternion.identity;
 			Instantiate (obj, position, rotation);
 		}
+
+		//-----------------------------------------------------------------------------
+		// Public Methods
+		//-----------------------------------------------------------------------------
 
 		public void velocity (Vector3 vector)
 		{
@@ -51,6 +59,10 @@ namespace SpaceShooter.Core
 		{
 			return getRigidbody ().position;
 		}
+
+		//-----------------------------------------------------------------------------
+		// Protected Methods
+		//-----------------------------------------------------------------------------
 
 		protected Rigidbody getRigidbody ()
 		{

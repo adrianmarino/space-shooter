@@ -1,35 +1,37 @@
 ﻿using UnityEngine;
 
-public class DestroyByTime : MonoBehaviour
+namespace SpaceShooter
 {
-	void Start ()
+	public class DestroyByTime : Core.GameElement
 	{
-		Destroy (gameObject, LifeTime);	
-	}
+		void Start ()
+		{
+			Destroy (gameObject, LifeTime);	
+		}
 
-	//-----------------------------------------------------------------------------
-	// Properties
-	//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
+		// Properties
+		//-----------------------------------------------------------------------------
 
-	public float LifeTime {
-		get { return lifeTime; }
-		set { lifeTime = value; }
-	}
+		public float LifeTime {
+			get { return lifeTime; }
+			set { lifeTime = value; }
+		}
 
-	//-----------------------------------------------------------------------------
-	// Attributes
-	//-----------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------
+		// Attributes
+		//-----------------------------------------------------------------------------
 
-	[SerializeField]
-	private float lifeTime;
+		[SerializeField]
+		private float lifeTime;
 
-	//--------------------------------------------------------------
-	// Constructors
-	//--------------------------------------------------------------
+		//--------------------------------------------------------------
+		// Constructors
+		//--------------------------------------------------------------
 
-	public DestroyByTime ()
-	{
-		lifeTime = 3;
+		public DestroyByTime ()
+		{
+			lifeTime = 3;
+		}
 	}
 }
-

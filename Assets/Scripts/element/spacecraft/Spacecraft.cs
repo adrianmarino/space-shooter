@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
-	public class Spacecraft : GameElement, MovableElement
+	public class Spacecraft : Core.GameElement, MovableElement
 	{
 		void Update ()
 		{

@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
-	public class Asteroid : GameElement
+	public class Asteroid :  Core.GameElement
 	{
 		void OnTriggerEnter (Collider other)
 		{
@@ -20,7 +19,7 @@ namespace SpaceShooter
 
 		public static void destroyAll ()
 		{
-			GameElement.destroyAllByTag ("Asteroid");
+			Core.GameElement.destroyAllByTag ("Asteroid");
 		}
 
 		//-----------------------------------------------------------------------------
@@ -36,10 +35,10 @@ namespace SpaceShooter
 
 			if (other.tag == "Spacecraft") {
 				Instantiate (playerExplosion, other.transform.position, other.transform.rotation);
-				GameElement.instance<Game> ("Game").Finish ();
+				Core.GameElement.instance<Game> ("Game").Finish ();
 			}
 			if (other.tag == "LaserShot") {
-				GameElement.instance<ScorePanel> ("ScorePanel").addScore (10);
+				Core.GameElement.instance<ScorePanel> ("ScorePanel").addScore (pointsByAsteriod);
 			}
 		}
 
@@ -86,6 +85,11 @@ namespace SpaceShooter
 			set { scorePanel = value; }
 		}
 
+		public int PointsByAsteriod {
+			get { return pointsByAsteriod; }
+			set { pointsByAsteriod = value; }
+		}
+
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
@@ -105,6 +109,9 @@ namespace SpaceShooter
 		[SerializeField]
 		private GameObject playerExplosion;
 
+		[SerializeField]
+		private int pointsByAsteriod;
+
 		//-----------------------------------------------------------------------------
 		// Constructors
 		//-----------------------------------------------------------------------------
@@ -113,6 +120,7 @@ namespace SpaceShooter
 		{
 			tumble = 3;
 			speed = -4;
+			pointsByAsteriod = 10;
 		}
 	}
 }

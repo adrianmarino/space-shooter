@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Linq.Expressions;
 
 namespace SpaceShooter
 {
