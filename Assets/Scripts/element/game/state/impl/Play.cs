@@ -2,29 +2,29 @@
 
 namespace SpaceShooter
 {
-	public class Play : GameState<Game>
+	public class Play : GameState<Game, GameContext>
 	{
-		public override void begin ()
+		public override void begin (GameContext context)
 		{
-			target.ScorePanel.reset ();
-			target.GameOverPanel.clean ();
-			target.StartPanel.clean ();
+			context.ScorePanel.reset ();
+			context.GameOverPanel.clean ();
+			context.StartPanel.clean ();
 
-			target.Spacecraft.instanciate ();
-			target.AsteroidGenerator.start ();
+			context.Spacecraft.instanciate ();
+			context.AsteroidGenerator.start ();
 		}
 
-		public override void finish ()
+		public override void finish (GameContext context)
 		{
-			target.AsteroidGenerator.stop ();
-			target.finish ();
+			context.AsteroidGenerator.stop ();
+			game.finish ();
 		}
 
 		//-----------------------------------------------------------------------------
 		// Constructors
 		//-----------------------------------------------------------------------------
 
-		public Play (Game target) : base (target)
+		public Play (Game game) : base (game)
 		{
 		}
 	}

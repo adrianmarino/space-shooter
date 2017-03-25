@@ -2,25 +2,25 @@
 
 namespace SpaceShooter
 {
-	public class Finish : GameState<Game>
+	public class Finish : GameState<Game, GameContext>
 	{
-		public override void begin ()
+		public override void begin (GameContext context)
 		{
-			target.GameOverPanel.show ();
-			target.StartPanel.show ();
+			context.GameOverPanel.show ();
+			context.StartPanel.show ();
 		}
 
-		public override void update ()
+		public override void update (GameContext context)
 		{
 			if (Input.GetKeyDown (KeyCode.S))
-				target.play ();
+				game.play ();
 		}
 
 		//-----------------------------------------------------------------------------
 		// Constructors
 		//-----------------------------------------------------------------------------
 
-		public Finish (Game target) : base (target)
+		public Finish (Game game) : base (game)
 		{
 		}
 	}

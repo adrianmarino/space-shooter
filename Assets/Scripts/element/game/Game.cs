@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
+using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
-	public class Game : Core.GameElement
+	public class Game : GameElement
 	{
 		void Start ()
 		{
-			State.begin ();
+			State.begin (Context);
 		}
 
 		void Update ()
 		{
-			State.update ();
+			State.update (Context);
 		}
 
 		public void Finish ()
 		{
-			State.finish ();
+			State.finish (Context);
 		}
 
 		public void play ()
@@ -33,22 +34,12 @@ namespace SpaceShooter
 		// Properties
 		//-----------------------------------------------------------------------------
 
-		public GameOverPanel GameOverPanel {
-			get { return gameOverPanel; }
-			set { gameOverPanel = value; }
+		public GameContext Context {
+			get { return context; }
+			set { context = value; }
 		}
 
-		public StartPanel StartPanel {
-			get { return startPanel; }
-			set { startPanel = value; }
-		}
-
-		public ScorePanel ScorePanel {
-			get { return scorePanel; }
-			set { scorePanel = value; }
-		}
-
-		public GameState<Game> State {
+		public GameState<Game, GameContext> State {
 			get { 
 				if (state == null)
 					state = new Initial (this);
@@ -56,39 +47,18 @@ namespace SpaceShooter
 			}
 			set { 
 				state = value;
-				state.begin ();
+				state.begin (context);
 			}
-		}
-
-		public Spacecraft Spacecraft {
-			get { return spacecraft; }
-			set { spacecraft = value; }
-		}
-
-		public AsteroidGenerator AsteroidGenerator {
-			get { return asteroidGenerator; }
-			set { asteroidGenerator = value; }
 		}
 
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
-	
-		[SerializeField]
-		private GameOverPanel gameOverPanel;
 
 		[SerializeField]
-		private StartPanel startPanel;
+		private GameContext context;
 
-		[SerializeField]
-		private ScorePanel scorePanel;
-
-		[SerializeField]
-		private Spacecraft spacecraft;
-
-		[SerializeField]
-		private AsteroidGenerator asteroidGenerator;
-
-		private GameState<Game> state;
+		private GameState<Game, GameContext> state;
 	}
 }
+

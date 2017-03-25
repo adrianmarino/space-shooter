@@ -4,25 +4,25 @@ using SpaceShooter;
 
 namespace SpaceShooter
 {
-	public class Initial : GameState<Game>
+	public class Initial : GameState<Game, GameContext>
 	{
-		public override void begin ()
+		public override void begin (GameContext context)
 		{
-			target.GameOverPanel.clean ();
-			target.StartPanel.show ();
+			context.GameOverPanel.clean ();
+			context.StartPanel.show ();
 		}
 
-		public override void update ()
+		public override void update (GameContext context)
 		{
 			if (Input.GetKeyDown (KeyCode.S))
-				target.play ();
+				game.play ();
 		}
 
 		//-----------------------------------------------------------------------------
 		// Constructors
 		//-----------------------------------------------------------------------------
 
-		public Initial (Game target) : base (target)
+		public Initial (Game game) : base (game)
 		{
 		}
 	}
