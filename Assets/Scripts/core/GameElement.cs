@@ -10,6 +10,16 @@ namespace SpaceShooter.Core
 		// Public Static Methods
 		//-----------------------------------------------------------------------------
 
+		public static ELEMENT to<ELEMENT> (GameElement element)
+		{
+			return to<ELEMENT> (element.gameObject);
+		}
+
+		public static ELEMENT to<ELEMENT> (GameObject element)
+		{
+			return element.GetComponent <ELEMENT> ();
+		}
+
 		public static void destroyAllByTag (string tag)
 		{
 			foreach (GameObject element in GameObject.FindGameObjectsWithTag (tag))
@@ -21,7 +31,7 @@ namespace SpaceShooter.Core
 			GameObject gameObject = GameObject.FindWithTag (name);
 			if (gameObject == null)
 				throw new Exception ("Cannot find " + name + " object!");
-			return gameObject.GetComponent <ELEMENT> ();
+			return to<ELEMENT> (gameObject);
 		}
 
 		public static void instanciate (GameObject obj, float xPosition, float yPosition)

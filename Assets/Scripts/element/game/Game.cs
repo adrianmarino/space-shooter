@@ -19,31 +19,6 @@ namespace SpaceShooter
 			State.finish ();
 		}
 
-		public void cleanRestartText ()
-		{
-			RestartText.text = "";
-		}
-
-		public void cleanGameOverText ()
-		{
-			GameOverText.text = "";
-		}
-
-		public void showRestart ()
-		{
-			RestartText.text = "Press R to restart";
-		}
-
-		public void showGameOver ()
-		{
-			GameOverText.text = "GAME OVER";
-		}
-
-		public void instanciateSpacecraft ()
-		{
-			Core.GameElement.instanciate (spacecraft, 0, 0);
-		}
-
 		public void play ()
 		{
 			State = new Play (this);
@@ -58,14 +33,14 @@ namespace SpaceShooter
 		// Properties
 		//-----------------------------------------------------------------------------
 
-		public GUIText GameOverText {
-			get { return gameOverText; }
-			set { gameOverText = value; }
+		public GameOverPanel GameOverPanel {
+			get { return gameOverPanel; }
+			set { gameOverPanel = value; }
 		}
 
-		public GUIText RestartText {
-			get { return restartText; }
-			set { restartText = value; }
+		public StartPanel StartPanel {
+			get { return startPanel; }
+			set { startPanel = value; }
 		}
 
 		public ScorePanel ScorePanel {
@@ -85,7 +60,7 @@ namespace SpaceShooter
 			}
 		}
 
-		public GameObject Spacecraft {
+		public Spacecraft Spacecraft {
 			get { return spacecraft; }
 			set { spacecraft = value; }
 		}
@@ -100,13 +75,16 @@ namespace SpaceShooter
 		//-----------------------------------------------------------------------------
 	
 		[SerializeField]
-		private GUIText gameOverText, restartText;
+		private GameOverPanel gameOverPanel;
+
+		[SerializeField]
+		private StartPanel startPanel;
 
 		[SerializeField]
 		private ScorePanel scorePanel;
 
 		[SerializeField]
-		private GameObject spacecraft;
+		private Spacecraft spacecraft;
 
 		[SerializeField]
 		private AsteroidGenerator asteroidGenerator;

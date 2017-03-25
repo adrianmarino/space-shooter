@@ -7,10 +7,10 @@ namespace SpaceShooter
 		public override void begin ()
 		{
 			target.ScorePanel.reset ();
-			target.cleanGameOverText ();
-			target.cleanRestartText ();
+			target.GameOverPanel.clean ();
+			target.StartPanel.clean ();
 
-			target.instanciateSpacecraft ();
+			target.Spacecraft.instanciate ();
 			target.AsteroidGenerator.start ();
 		}
 

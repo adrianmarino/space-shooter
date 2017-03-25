@@ -8,13 +8,13 @@ namespace SpaceShooter
 	{
 		public override void begin ()
 		{
-			target.cleanGameOverText ();
-			target.showRestart ();
+			target.GameOverPanel.clean ();
+			target.StartPanel.show ();
 		}
 
 		public override void update ()
 		{
-			if (Input.GetKeyDown (KeyCode.R))
+			if (Input.GetKeyDown (KeyCode.S))
 				target.play ();
 		}
 
