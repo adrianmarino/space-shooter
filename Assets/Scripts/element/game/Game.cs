@@ -43,7 +43,7 @@ namespace SpaceShooter
 			GameOverText.text = "GAME OVER";
 		}
 
-		public void startGenerateAsteroids ()
+		public void beginAsteroidsGeneration ()
 		{
 			StartCoroutine (nextAsteroidWave ());
 		}
@@ -64,7 +64,7 @@ namespace SpaceShooter
 			}
 		}
 
-		public void endGenerateAsteroids ()
+		public void finishAsteroidsGeneration ()
 		{
 			generateAsteroids = false;
 		}
@@ -72,6 +72,16 @@ namespace SpaceShooter
 		public void instanciateSpacecraft ()
 		{
 			GameElement.instanciate (spacecraft, 0, 0);
+		}
+
+		public void play ()
+		{
+			State = new Play (this);
+		}
+
+		public void finish ()
+		{
+			State = new Finish (this);
 		}
 
 		//-----------------------------------------------------------------------------
@@ -114,7 +124,11 @@ namespace SpaceShooter
 		}
 
 		public GameState<Game> State {
-			get { return state; }
+			get { 
+				if (state == null)
+					state = new Initial (this);
+				return state;
+			}
 			set { 
 				state = value;
 				state.begin ();
@@ -163,7 +177,6 @@ namespace SpaceShooter
 		{
 			asteroidWaveSize = 1;
 			asteroidWaveWait = 2f;
-			state = new Play (this);
 		}
 	}
 }

@@ -1,28 +1,29 @@
 ﻿using UnityEngine;
+using System.Collections;
+using SpaceShooter;
 
 namespace SpaceShooter
 {
-	public class GameOver : GameState<Game>
+	public class Initial : GameState<Game>
 	{
 		public override void begin ()
 		{
-			target.showGameOver ();
+			target.cleanGameOverText ();
 			target.showRestart ();
 		}
 
 		public override void update ()
 		{
 			if (Input.GetKeyDown (KeyCode.R))
-				target.State = new Play (target);
+				target.play ();
 		}
 
 		//-----------------------------------------------------------------------------
 		// Constructors
 		//-----------------------------------------------------------------------------
 
-		public GameOver (Game target) : base (target)
+		public Initial (Game target) : base (target)
 		{
 		}
 	}
 }
-

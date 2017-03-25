@@ -9,14 +9,15 @@ namespace SpaceShooter
 			target.ScorePanel.reset ();
 			target.cleanGameOverText ();
 			target.cleanRestartText ();
+
 			target.instanciateSpacecraft ();
-			target.startGenerateAsteroids ();
+			target.beginAsteroidsGeneration ();
 		}
 
 		public override void finish ()
 		{
-			target.endGenerateAsteroids ();
-			target.State = new GameOver (target);
+			target.finishAsteroidsGeneration ();
+			target.finish ();
 		}
 
 		//-----------------------------------------------------------------------------

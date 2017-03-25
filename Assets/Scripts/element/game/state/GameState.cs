@@ -1,4 +1,4 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace SpaceShooter
 {
@@ -6,16 +6,17 @@ namespace SpaceShooter
 	{
 		public virtual void begin ()
 		{
-			throw new NotImplementedException ();
+			throw new Error.UnimplementedGameStateBehavior (this, "begin");
 		}
 
 		public virtual void update ()
 		{
+			Debug.Log (Error.Messages.unimplementedGameStateBehavior (this, "update"));
 		}
 
 		public virtual void finish ()
 		{
-			throw new NotImplementedException ();
+			throw new Error.UnimplementedGameStateBehavior (this, "begin");
 		}
 
 		//-----------------------------------------------------------------------------
