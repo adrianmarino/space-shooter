@@ -8,7 +8,7 @@ namespace SpaceShooter
 		{
 			if (Input.GetKeyDown (KeyCode.LeftControl) && Time.time > nextShot) {
 				nextShot = Time.time + ShotRate;
-				Instantiate (LaserShot, transform.position, transform.rotation);
+				LaserShot.instanciate (transform);
 			}
 		}
 
@@ -16,7 +16,7 @@ namespace SpaceShooter
 		// Properties
 		//-----------------------------------------------------------------------------
 
-		public GameObject LaserShot {
+		public LaserShot LaserShot {
 			get { return laserShot; }
 			set { laserShot = value; }
 		}
@@ -31,7 +31,7 @@ namespace SpaceShooter
 		//-----------------------------------------------------------------------------
 
 		[SerializeField]
-		private GameObject laserShot;
+		private LaserShot laserShot;
 
 		[SerializeField]
 		private float shotRate;
