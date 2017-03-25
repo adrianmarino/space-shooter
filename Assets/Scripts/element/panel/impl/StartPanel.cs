@@ -2,9 +2,9 @@
 {
 	public class StartPanel : TextPanel
 	{
-		public void show ()
+		public void Show ()
 		{
-			Text = "Press S to start";
+			Value = "Press S to start";
 		}
 	}
 }

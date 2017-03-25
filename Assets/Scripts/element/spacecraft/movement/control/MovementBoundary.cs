@@ -5,8 +5,7 @@ namespace SpaceShooter
 	[System.Serializable]
 	public class MovementBoundary
 	{
-
-		public Vector3 clamp (Vector3 vector)
+		public Vector3 Clamp (Vector3 vector)
 		{
 			return Util.Vector3.create (
 				Mathf.Clamp (vector.x, Xmin, Xmax), 

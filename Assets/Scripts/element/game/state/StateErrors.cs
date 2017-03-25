@@ -8,7 +8,7 @@ namespace SpaceShooter
 	{
 		public class Messages
 		{
-			public static string unimplementedGameStateBehavior (object obj, string methodName)
+			public static string UnimplementedGameStateBehavior (object obj, string methodName)
 			{
 				return "'" + methodName + "' method not implemented on '" + obj.GetType ().Name + "' game state!";
 			}
@@ -16,7 +16,7 @@ namespace SpaceShooter
 
 		public class UnimplementedGameStateBehavior : Exception
 		{
-			public UnimplementedGameStateBehavior (object obj, string methodName) : base (Error.Messages.unimplementedGameStateBehavior (obj, methodName))
+			public UnimplementedGameStateBehavior (object obj, string methodName) : base (Error.Messages.UnimplementedGameStateBehavior (obj, methodName))
 			{
 			}
 		}

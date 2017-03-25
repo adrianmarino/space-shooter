@@ -4,35 +4,23 @@ namespace SpaceShooter
 {
 	public class Spacecraft : Core.GameElement, MovableElement
 	{
+		//-----------------------------------------------------------------------------
+		// Engine events
+		//-----------------------------------------------------------------------------
+
 		void Update ()
 		{
-			verticalRotator.update (this);
-			movementController.updatePosition (this, Util.Input.nextDirection ());
+			verticalRotator.Update (this);
+			movementController.UpdatePosition (this, Util.Input.NextDirection ());
 		}
-
-		public void OnDestroy ()
-		{
-			Instantiate (Explosion, transform.position, transform.rotation);
-			Debug.Log (gameObject.tag + " destroyed!");
-			Game.Instance ().Finish ();
-		}
-
-		//--------------------------------------------------------------
-		// Public Static Methods
-		//--------------------------------------------------------------
-
-		public static Spacecraft from (GameObject obj)
-		{
-			return Core.GameElement.to<Spacecraft> (obj);
-		}
-
+			
 		//-----------------------------------------------------------------------------
 		// Public Methods
 		//-----------------------------------------------------------------------------
 
-		public void instanciate ()
+		public void Instanciate ()
 		{
-			Core.GameElement.instanciate (this.gameObject, 0, 0);
+			Core.GameElement.Instanciate (this.gameObject, 0, 0);
 		}
 
 		//-----------------------------------------------------------------------------
@@ -49,22 +37,14 @@ namespace SpaceShooter
 			set { tilt = value; }
 		}
 
-		public MovementController movementControler {
-			get { return movementControler; }
-			set { movementControler = value; }
-		}
-
-		public GameObject Explosion {
-			get { return explosion; }
-			set { explosion = value; }
+		public MovementController MovementControler {
+			get { return MovementControler; }
+			set { MovementControler = value; }
 		}
 
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
-
-		[SerializeField]
-		private GameObject explosion;
 
 		[SerializeField]
 		private float speed;

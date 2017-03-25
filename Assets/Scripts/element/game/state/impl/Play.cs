@@ -4,20 +4,20 @@ namespace SpaceShooter
 {
 	public class Play : GameState<Game, GameContext>
 	{
-		public override void begin (GameContext context)
+		public override void Begin (GameContext context)
 		{
-			context.ScorePanel.reset ();
-			context.GameOverPanel.clean ();
-			context.StartPanel.clean ();
+			context.ScorePanel.Reset ();
+			context.GameOverPanel.Clean ();
+			context.StartPanel.Clean ();
 
-			context.Spacecraft.instanciate ();
-			context.AsteroidGenerator.start ();
+			context.Spacecraft.Instanciate ();
+			context.AsteroidGenerator.Begin ();
 		}
 
-		public override void finish (GameContext context)
+		public override void Finish (GameContext context)
 		{
-			context.AsteroidGenerator.stop ();
-			game.changeToFinish ();
+			context.AsteroidGenerator.End ();
+			game.ChangeToFinish ();
 		}
 
 		//-----------------------------------------------------------------------------

@@ -4,15 +4,15 @@ namespace SpaceShooter
 {
 	public interface MovableElement
 	{
-		void rotate (Quaternion quaternion);
+		void Rotate (Quaternion quaternion);
 
-		void velocity (Vector3 vector);
+		void Velocity (Vector3 vector);
 
-		Vector3 velocity ();
+		Vector3 Velocity ();
 
-		void position (Vector3 vector);
+		void Position (Vector3 vector);
 
-		Vector3 position ();
+		Vector3 Position ();
 
 		float Speed {
 			get;

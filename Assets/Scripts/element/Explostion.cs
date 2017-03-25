@@ -2,11 +2,24 @@
 
 namespace SpaceShooter
 {
-	public class DestroyByTime : Core.GameElement
+	public class Explostion : Core.GameElement
 	{
+		//-----------------------------------------------------------------------------
+		// Engine Events
+		//-----------------------------------------------------------------------------
+
 		void Start ()
 		{
 			Destroy (gameObject, LifeTime);	
+		}
+
+		//--------------------------------------------------------------
+		// Public Static Methods
+		//--------------------------------------------------------------
+
+		public static void DestroyAll ()
+		{
+			Core.GameElement.DestroyAllByTag ("Explosion");
 		}
 
 		//-----------------------------------------------------------------------------
@@ -29,7 +42,7 @@ namespace SpaceShooter
 		// Constructors
 		//--------------------------------------------------------------
 
-		public DestroyByTime ()
+		public Explostion ()
 		{
 			lifeTime = 3;
 		}

@@ -2,9 +2,9 @@
 {
 	public class GameOverPanel : TextPanel
 	{
-		public void show ()
+		public void Show ()
 		{
-			Text = "GAME OVER";
+			Value = "GAME OVER";
 		}
 	}
 }

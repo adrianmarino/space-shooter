@@ -6,12 +6,16 @@ namespace SpaceShooter
 {
 	public class AsteroidGenerator : Core.GameElement
 	{
-		public void start ()
+		//--------------------------------------------------------------
+		// Public Methods
+		//--------------------------------------------------------------
+
+		public void Begin ()
 		{
-			StartCoroutine (nextAsteroidWave ());
+			StartCoroutine (NextAsteroidWave ());
 		}
 
-		public void stop ()
+		public void End ()
 		{
 			generateAsteroids = false;
 		}
@@ -20,20 +24,21 @@ namespace SpaceShooter
 		// Private Methods
 		//-----------------------------------------------------------------------------
 
-		private IEnumerator nextAsteroidWave ()
+		private IEnumerator NextAsteroidWave ()
 		{
 			generateAsteroids = true;
 			yield return new WaitForSeconds (AsteroidWaveWait);
 			while (generateAsteroids) {
 				for (int i = 0; i < AsteroidWaveSize; i++) {
 					foreach (GameObject asteroid in Asteriods) {
-						asteriodFactory.instanciate (asteroid);
+						asteriodFactory.Instanciate (asteroid);
 						yield return new WaitForSeconds (AsteroidWaveWait);
 						if (!generateAsteroids)
-							Asteroid.destroyAll ();
+							Asteroid.DestroyAll ();
 					}
 				}
 			}
+			yield return new WaitForSeconds (AsteroidWaveWait);
 		}
 
 		//-----------------------------------------------------------------------------

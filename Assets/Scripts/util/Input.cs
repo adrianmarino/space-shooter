@@ -5,17 +5,17 @@ namespace Util
 {
 	public class Input
 	{
-		public static Vector2 nextDirection ()
+		public static Vector2 NextDirection ()
 		{
-			return new Vector2 (nextXDirection (), nextYDirection ());
+			return new Vector2 (NextXDirection (), NextYDirection ());
 		}
 
-		public static float nextXDirection ()
+		public static float NextXDirection ()
 		{
 			return UnityEngine.Input.GetAxis ("Horizontal");
 		}
 
-		public static float nextYDirection ()
+		public static float NextYDirection ()
 		{
 			return UnityEngine.Input.GetAxis ("Vertical");
 		}

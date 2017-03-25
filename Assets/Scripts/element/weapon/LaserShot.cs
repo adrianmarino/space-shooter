@@ -4,16 +4,20 @@ namespace SpaceShooter
 {
 	public class LaserShot : Core.GameElement
 	{
+		//-----------------------------------------------------------------------------
+		// Engine Events
+		//-----------------------------------------------------------------------------
+
 		void Start ()
 		{
-			applyVelocity (Speed);
+			ApplyVelocity (Speed);
 		}
 
 		//-----------------------------------------------------------------------------
 		// Public Methods
 		//-----------------------------------------------------------------------------
 
-		public void instanciate (Transform transform)
+		public void Instanciate (Transform transform)
 		{
 			Instantiate (gameObject, transform.position, transform.rotation);
 		}

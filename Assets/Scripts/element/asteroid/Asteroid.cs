@@ -4,42 +4,32 @@ namespace SpaceShooter
 {
 	public class Asteroid :  Core.GameElement
 	{
-		void OnTriggerEnter (Collider other)
-		{
-			if (other.tag == "GameArea")
-				return;
-			Destroy (gameObject);
-			Destroy (other.gameObject);
-		}
+		//--------------------------------------------------------------
+		// Engine Events
+		//--------------------------------------------------------------
 
 		void Start ()
 		{
-			setVerticalRotation ();
-			applyVelocity (Speed);
-		}
-
-		void OnDestroy ()
-		{
-			Instantiate (Explosion, transform.position, transform.rotation);
-			Debug.Log (gameObject.tag + " destroyed!");
+			SetVerticalRotation ();
+			ApplyVelocity (Speed);
 		}
 
 		//--------------------------------------------------------------
 		// Public Static Methods
 		//--------------------------------------------------------------
 	
-		public static void destroyAll ()
+		public static void DestroyAll ()
 		{
-			Core.GameElement.destroyAllByTag ("Asteroid");
+			Core.GameElement.DestroyAllByTag ("Asteroid");
 		}
 
 		//-----------------------------------------------------------------------------
 		// Private Methods
 		//-----------------------------------------------------------------------------
 
-		private void setVerticalRotation ()
+		private void SetVerticalRotation ()
 		{
-			getRigidbody ().angularVelocity = Random.insideUnitSphere * tumble;
+			GetRigidbody ().angularVelocity = Random.insideUnitSphere * tumble;
 		}
 
 		//-----------------------------------------------------------------------------
@@ -51,16 +41,11 @@ namespace SpaceShooter
 			set { tumble = value; }
 		}
 
-		public GameObject Explosion {
-			get { return explosion; }
-			set { explosion = value; }
-		}
-
 		public float Speed {
 			get { return speed; }
 			set {
 				speed = value;
-				applyVelocity (speed);
+				ApplyVelocity (speed);
 			}
 		}
 
@@ -73,9 +58,6 @@ namespace SpaceShooter
 
 		[SerializeField]
 		private float tumble;
-
-		[SerializeField]
-		private GameObject explosion;
 
 		//-----------------------------------------------------------------------------
 		// Constructors

@@ -10,36 +10,27 @@ namespace SpaceShooter
 		// Public Methods
 		//-----------------------------------------------------------------------------
 
-		public void clean ()
+		public void Clean ()
 		{
-			self ().text = "";
+			Value = "";
 		}
 
 		//-----------------------------------------------------------------------------
 		// Properties
 		//-----------------------------------------------------------------------------
 
-		protected string Text {
-			get { return self ().text; }
-			set { self ().text = value; }
+		protected string Value {
+			get { return Self ().text; }
+			set { Self ().text = value; }
 		}
 
 		//-----------------------------------------------------------------------------
 		// Private Methods
 		//-----------------------------------------------------------------------------
 
-		private GUIText self ()
+		private GUIText Self ()
 		{
-			return GameElement.to<GUIText> (this);
-		}
-
-		//-----------------------------------------------------------------------------
-		// Constructors
-		//-----------------------------------------------------------------------------
-
-		public TextPanel ()
-		{
-			Text = "";
+			return GameElement.To<GUIText> (this);
 		}
 	}
 }

@@ -10,31 +10,31 @@ namespace SpaceShooter.Core
 		// Public Static Methods
 		//-----------------------------------------------------------------------------
 
-		public static ELEMENT to<ELEMENT> (GameElement element)
+		public static ELEMENT To<ELEMENT> (GameElement element)
 		{
-			return to<ELEMENT> (element.gameObject);
+			return To<ELEMENT> (element.gameObject);
 		}
 
-		public static ELEMENT to<ELEMENT> (GameObject element)
+		public static ELEMENT To<ELEMENT> (GameObject element)
 		{
 			return element.GetComponent <ELEMENT> ();
 		}
 
-		public static void destroyAllByTag (string tag)
+		public static void DestroyAllByTag (string tag)
 		{
 			foreach (GameObject element in GameObject.FindGameObjectsWithTag (tag))
 				Destroy (element);
 		}
 
-		public static ELEMENT instance<ELEMENT> (string name)
+		public static ELEMENT Instance<ELEMENT> (string name)
 		{
 			GameObject gameObject = GameObject.FindWithTag (name);
 			if (gameObject == null)
 				throw new Exception ("Cannot find " + name + " object!");
-			return to<ELEMENT> (gameObject);
+			return To<ELEMENT> (gameObject);
 		}
 
-		public static void instanciate (GameObject obj, float xPosition, float yPosition)
+		public static void Instanciate (GameObject obj, float xPosition, float yPosition)
 		{
 			Vector3 position = Util.Vector3.create (xPosition, yPosition);
 			Quaternion rotation = Quaternion.identity;
@@ -45,43 +45,43 @@ namespace SpaceShooter.Core
 		// Public Methods
 		//-----------------------------------------------------------------------------
 
-		public void velocity (Vector3 vector)
+		public void Velocity (Vector3 vector)
 		{
-			getRigidbody ().velocity = vector;
+			GetRigidbody ().velocity = vector;
 		}
 
-		public Vector3 velocity ()
+		public Vector3 Velocity ()
 		{
-			return getRigidbody ().velocity;
+			return GetRigidbody ().velocity;
 		}
 
-		public void position (Vector3 vector)
+		public void Position (Vector3 vector)
 		{
-			getRigidbody ().position = vector;
+			GetRigidbody ().position = vector;
 		}
 
-		public void rotate (Quaternion quaternion)
+		public void Rotate (Quaternion quaternion)
 		{
-			getRigidbody ().rotation = quaternion;
+			GetRigidbody ().rotation = quaternion;
 		}
 
-		public Vector3 position ()
+		public Vector3 Position ()
 		{
-			return getRigidbody ().position;
+			return GetRigidbody ().position;
 		}
 
 		//-----------------------------------------------------------------------------
 		// Protected Methods
 		//-----------------------------------------------------------------------------
 
-		protected Rigidbody getRigidbody ()
+		protected Rigidbody GetRigidbody ()
 		{
 			return GetComponent<Rigidbody> ();
 		}
 
-		protected void applyVelocity (float speed)
+		protected void ApplyVelocity (float speed)
 		{
-			velocity (transform.forward * speed);
+			Velocity (transform.forward * speed);
 		}
 	}
 }

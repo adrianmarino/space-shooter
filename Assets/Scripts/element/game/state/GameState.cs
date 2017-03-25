@@ -4,17 +4,16 @@ namespace SpaceShooter
 {
 	public abstract class GameState<GAME, CONTEXT>
 	{
-		public virtual void begin (CONTEXT context)
+		public virtual void Begin (CONTEXT context)
 		{
 			throw new Error.UnimplementedGameStateBehavior (this, "begin");
 		}
 
-		public virtual void update (CONTEXT context)
+		public virtual void Update (CONTEXT context)
 		{
-			Debug.Log (Error.Messages.unimplementedGameStateBehavior (this, "update"));
 		}
 
-		public virtual void finish (CONTEXT context)
+		public virtual void Finish (CONTEXT context)
 		{
 			throw new Error.UnimplementedGameStateBehavior (this, "begin");
 		}

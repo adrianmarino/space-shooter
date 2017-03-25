@@ -4,11 +4,15 @@ namespace SpaceShooter
 {
 	public class LaserWeapon : Core.GameElement
 	{
+		//-----------------------------------------------------------------------------
+		// Engine Events
+		//-----------------------------------------------------------------------------
+
 		void Update ()
 		{
 			if (Input.GetButton (ShotButton) && Time.time > nextShot) {
 				nextShot = Time.time + ShotRate;
-				LaserShot.instanciate (transform);
+				LaserShot.Instanciate (transform);
 			}
 		}
 

@@ -4,16 +4,16 @@ namespace SpaceShooter
 {
 	public class Finish : GameState<Game, GameContext>
 	{
-		public override void begin (GameContext context)
+		public override void Begin (GameContext context)
 		{
-			context.GameOverPanel.show ();
-			context.StartPanel.show ();
+			context.GameOverPanel.Show ();
+			context.StartPanel.Show ();
 		}
 
-		public override void update (GameContext context)
+		public override void Update (GameContext context)
 		{
 			if (Input.GetKeyDown (KeyCode.S))
-				game.changeToPlay ();
+				game.ChangeToPlay ();
 		}
 
 		//-----------------------------------------------------------------------------

@@ -6,26 +6,31 @@ namespace SpaceShooter
 	public class Game : GameElement
 	{
 		//--------------------------------------------------------------
-		// Rendering Methods
+		// Engine Events
 		//--------------------------------------------------------------
 
 		void Start ()
 		{
-			State.begin (Context);
+			State.Begin (Context);
 		}
 
 		void Update ()
 		{
-			State.update (Context);
+			State.Update (Context);
 		}
 
+		void OnApplicationQuit ()
+		{
+			ChangeToFinish ();
+		}
+	
 		//--------------------------------------------------------------
 		// Public Static Methods
 		//--------------------------------------------------------------
 
 		public static Game Instance ()
 		{
-			return Core.GameElement.instance<Game> ("Game");
+			return Core.GameElement.Instance<Game> ("Game");
 		}
 
 		//--------------------------------------------------------------
@@ -34,15 +39,15 @@ namespace SpaceShooter
 
 		public void Finish ()
 		{
-			State.finish (Context);
+			State.Finish (Context);
 		}
 
-		public void changeToPlay ()
+		public void ChangeToPlay ()
 		{
 			State = new Play (this);
 		}
 
-		public void changeToFinish ()
+		public void ChangeToFinish ()
 		{
 			State = new Finish (this);
 		}
@@ -64,7 +69,7 @@ namespace SpaceShooter
 			}
 			set { 
 				state = value;
-				state.begin (context);
+				state.Begin (context);
 			}
 		}
 

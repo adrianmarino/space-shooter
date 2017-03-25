@@ -5,9 +5,13 @@ namespace SpaceShooter
 	[System.Serializable]
 	public class AsteroidFactory : Core.GameElement
 	{
-		public void instanciate (GameObject asteroid)
+		//--------------------------------------------------------------
+		// Public Methods
+		//--------------------------------------------------------------
+
+		public void Instanciate (GameObject asteroid)
 		{
-			Asteroid.instanciate (asteroid, Random.Range (MinX, MaxX), InitialY);
+			Asteroid.Instanciate (asteroid, Random.Range (MinX, MaxX), InitialY);
 		}
 
 		//-----------------------------------------------------------------------------
