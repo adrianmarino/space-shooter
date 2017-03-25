@@ -4,6 +4,15 @@ namespace SpaceShooter
 {
 	public class ScorePanel : TextPanel
 	{
+		//--------------------------------------------------------------
+		// Public Static Methods
+		//--------------------------------------------------------------
+
+		public static ScorePanel Instance ()
+		{
+			return Core.GameElement.instance<ScorePanel> ("ScorePanel");
+		}
+
 		//-----------------------------------------------------------------------------
 		// Public Methods
 		//-----------------------------------------------------------------------------

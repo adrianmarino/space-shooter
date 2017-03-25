@@ -10,6 +10,22 @@ namespace SpaceShooter
 			movementController.updatePosition (this, Util.Input.nextDirection ());
 		}
 
+		public void OnDestroy ()
+		{
+			Instantiate (Explosion, transform.position, transform.rotation);
+			Debug.Log (gameObject.tag + " destroyed!");
+			Game.Instance ().Finish ();
+		}
+
+		//--------------------------------------------------------------
+		// Public Static Methods
+		//--------------------------------------------------------------
+
+		public static Spacecraft from (GameObject obj)
+		{
+			return Core.GameElement.to<Spacecraft> (obj);
+		}
+
 		//-----------------------------------------------------------------------------
 		// Public Methods
 		//-----------------------------------------------------------------------------
@@ -38,9 +54,17 @@ namespace SpaceShooter
 			set { movementControler = value; }
 		}
 
+		public GameObject Explosion {
+			get { return explosion; }
+			set { explosion = value; }
+		}
+
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
+
+		[SerializeField]
+		private GameObject explosion;
 
 		[SerializeField]
 		private float speed;

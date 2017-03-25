@@ -15,7 +15,7 @@ namespace SpaceShooter
 		public override void update (GameContext context)
 		{
 			if (Input.GetKeyDown (KeyCode.S))
-				game.play ();
+				game.changeToPlay ();
 		}
 
 		//-----------------------------------------------------------------------------

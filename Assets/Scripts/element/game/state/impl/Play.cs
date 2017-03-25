@@ -17,7 +17,7 @@ namespace SpaceShooter
 		public override void finish (GameContext context)
 		{
 			context.AsteroidGenerator.stop ();
-			game.finish ();
+			game.changeToFinish ();
 		}
 
 		//-----------------------------------------------------------------------------

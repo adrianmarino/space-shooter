@@ -5,6 +5,10 @@ namespace SpaceShooter
 {
 	public class Game : GameElement
 	{
+		//--------------------------------------------------------------
+		// Rendering Methods
+		//--------------------------------------------------------------
+
 		void Start ()
 		{
 			State.begin (Context);
@@ -15,17 +19,30 @@ namespace SpaceShooter
 			State.update (Context);
 		}
 
+		//--------------------------------------------------------------
+		// Public Static Methods
+		//--------------------------------------------------------------
+
+		public static Game Instance ()
+		{
+			return Core.GameElement.instance<Game> ("Game");
+		}
+
+		//--------------------------------------------------------------
+		// Public Methods
+		//--------------------------------------------------------------
+
 		public void Finish ()
 		{
 			State.finish (Context);
 		}
 
-		public void play ()
+		public void changeToPlay ()
 		{
 			State = new Play (this);
 		}
 
-		public void finish ()
+		public void changeToFinish ()
 		{
 			State = new Finish (this);
 		}

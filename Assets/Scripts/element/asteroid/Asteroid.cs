@@ -8,7 +8,12 @@ namespace SpaceShooter
 		{
 			if (other.tag == "GameArea")
 				return;
-			destroyObjects (other);
+
+			Destroy (gameObject);
+			Destroy (other.gameObject);
+
+			if (other.tag == "LaserShot")
+				ScorePanel.Instance ().addScore (pointsByAsteriod); 
 		}
 
 		void Start ()
@@ -17,6 +22,16 @@ namespace SpaceShooter
 			applyVelocity (Speed);
 		}
 
+		void OnDestroy ()
+		{
+			Instantiate (Explosion, transform.position, transform.rotation);
+			Debug.Log (gameObject.tag + " destroyed!");
+		}
+
+		//--------------------------------------------------------------
+		// Public Static Methods
+		//--------------------------------------------------------------
+	
 		public static void destroyAll ()
 		{
 			Core.GameElement.destroyAllByTag ("Asteroid");
@@ -26,31 +41,9 @@ namespace SpaceShooter
 		// Private Methods
 		//-----------------------------------------------------------------------------
 
-		private void destroyObjects (Collider other)
-		{	
-			Instantiate (explosion, transform.position, transform.rotation);
-
-			destroy (other.gameObject);
-			destroy (gameObject);
-
-			if (other.tag == "Spacecraft") {
-				Instantiate (playerExplosion, other.transform.position, other.transform.rotation);
-				Core.GameElement.instance<Game> ("Game").Finish ();
-			}
-			if (other.tag == "LaserShot") {
-				Core.GameElement.instance<ScorePanel> ("ScorePanel").addScore (pointsByAsteriod);
-			}
-		}
-
 		private void setVerticalRotation ()
 		{
 			getRigidbody ().angularVelocity = Random.insideUnitSphere * tumble;
-		}
-
-		private static void destroy (GameObject gameObject)
-		{
-			Destroy (gameObject);
-			Debug.Log (gameObject.tag + " destroyed!");
 		}
 
 		//-----------------------------------------------------------------------------
@@ -67,22 +60,12 @@ namespace SpaceShooter
 			set { explosion = value; }
 		}
 
-		public GameObject PlayerExplosion {
-			get { return playerExplosion; }
-			set { playerExplosion = value; }
-		}
-
 		public float Speed {
 			get { return speed; }
 			set {
 				speed = value;
 				applyVelocity (speed);
 			}
-		}
-
-		public ScorePanel ScorePanel {
-			get { return scorePanel; }
-			set { scorePanel = value; }
 		}
 
 		public int PointsByAsteriod {
@@ -95,9 +78,6 @@ namespace SpaceShooter
 		//-----------------------------------------------------------------------------
 
 		[SerializeField]
-		private ScorePanel scorePanel;
-
-		[SerializeField]
 		private float speed;
 
 		[SerializeField]
@@ -105,9 +85,6 @@ namespace SpaceShooter
 
 		[SerializeField]
 		private GameObject explosion;
-
-		[SerializeField]
-		private GameObject playerExplosion;
 
 		[SerializeField]
 		private int pointsByAsteriod;
