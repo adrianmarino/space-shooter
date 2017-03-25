@@ -6,7 +6,7 @@ namespace SpaceShooter
 	{
 		void Update ()
 		{
-			if (Input.GetKeyDown (KeyCode.LeftControl) && Time.time > nextShot) {
+			if (Input.GetButton (ShotButton) && Time.time > nextShot) {
 				nextShot = Time.time + ShotRate;
 				LaserShot.instanciate (transform);
 			}
@@ -26,6 +26,11 @@ namespace SpaceShooter
 			set { shotRate = value; }
 		}
 
+		public string ShotButton {
+			get { return shotButton; }
+			set { shotButton = value; }
+		}
+
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
@@ -35,6 +40,9 @@ namespace SpaceShooter
 
 		[SerializeField]
 		private float shotRate;
+
+		[SerializeField]
+		private string shotButton;
 
 		[SerializeField]
 		private float nextShot;
@@ -47,6 +55,7 @@ namespace SpaceShooter
 		{
 			shotRate = 0.25f;
 			nextShot = 0.0f;
+			ShotButton = "Jump";
 		}
 	}
 }
