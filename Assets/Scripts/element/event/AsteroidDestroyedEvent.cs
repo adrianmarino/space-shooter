@@ -10,8 +10,9 @@ namespace SpaceShooter
 
 		void OnTriggerEnter (Collider other)
 		{
-			if (other.tag == "GameArea")
+			if (other.tag == "GameBoundary")
 				return;
+
 			DestroyAndExplode (gameObject, AsteriodExplosion);
 
 			if (other.tag == "Spacecraft") {
