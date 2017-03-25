@@ -2,7 +2,7 @@
 
 namespace SpaceShooter
 {
-	public class Spacecraft : Core.GameElement, MovableElement
+	public class Spacecraft : Core.GameElement
 	{
 		//-----------------------------------------------------------------------------
 		// Engine events
@@ -10,8 +10,8 @@ namespace SpaceShooter
 
 		void Update ()
 		{
-			verticalRotator.Update (this);
-			movementController.UpdatePosition (this, Util.Input.NextDirection ());
+			verticalRotationMovement.Update (this);
+			movementController.Update (this, Util.Input.NextDirection ());
 		}
 			
 		//-----------------------------------------------------------------------------
@@ -27,14 +27,9 @@ namespace SpaceShooter
 		// Properties
 		//-----------------------------------------------------------------------------
 
-		public float Speed {
-			get { return speed; }
-			set { speed = value; }
-		}
-
-		public float Tilt {
-			get { return tilt; }
-			set { tilt = value; }
+		public VerstionRotationMovement VerticalRotator {
+			get { return verticalRotationMovement; }
+			set { verticalRotationMovement = value; }
 		}
 
 		public MovementController MovementControler {
@@ -47,16 +42,10 @@ namespace SpaceShooter
 		//-----------------------------------------------------------------------------
 
 		[SerializeField]
-		private float speed;
-
-		[SerializeField]
-		private float tilt;
-
-		[SerializeField]
 		private MovementController movementController;
 
 		[SerializeField]
-		private readonly SpacecraftRotator verticalRotator;
+		private VerstionRotationMovement verticalRotationMovement;
 
 		//-----------------------------------------------------------------------------
 		// Constructors
@@ -64,10 +53,8 @@ namespace SpaceShooter
 	
 		public Spacecraft ()
 		{
-			this.speed = 15;
-			this.tilt = 4;
-			this.movementController = new MovementController ();
-			this.verticalRotator = new SpacecraftRotator ();
+			movementController = new MovementController ();
+			verticalRotationMovement = new VerstionRotationMovement ();
 		}
 	}
 }

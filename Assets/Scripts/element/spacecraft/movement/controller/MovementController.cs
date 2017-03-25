@@ -2,15 +2,16 @@
 
 using SpaceShooter;
 using System;
+using SpaceShooter.Core;
 
 namespace SpaceShooter
 {
 	[System.Serializable]
 	public class MovementController
 	{
-		public void UpdatePosition (MovableElement element, Vector2 direction)
+		public void Update (GameElement element, Vector2 direction)
 		{
-			element.Velocity (Util.Vector3.create (direction.x, direction.y) * element.Speed);
+			element.Velocity (Util.Vector3.create (direction.x, direction.y) * Speed);
 			// logDirectionVector (direction.x, direction.y);
 
 			element.Position (Boundary.Clamp (element.Position ()));
@@ -39,7 +40,12 @@ namespace SpaceShooter
 			get { return boundary; }
 			set { boundary = value; }
 		}
-		
+
+		public float Speed {
+			get { return speed; }
+			set { speed = value; }
+		}
+
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
@@ -47,13 +53,17 @@ namespace SpaceShooter
 		[SerializeField]
 		private MovementBoundary boundary;
 
+		[SerializeField]
+		private float speed;
+
 		//--------------------------------------------------------------
 		// Constructors
 		//--------------------------------------------------------------
 
 		public MovementController ()
 		{
-			boundary = new MovementBoundary ();
+			Speed = 15;
+			Boundary = new MovementBoundary ();
 		}
 	}
 }
