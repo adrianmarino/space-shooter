@@ -8,12 +8,8 @@ namespace SpaceShooter
 		{
 			if (other.tag == "GameArea")
 				return;
-
 			Destroy (gameObject);
 			Destroy (other.gameObject);
-
-			if (other.tag == "LaserShot")
-				ScorePanel.Instance ().addScore (pointsByAsteriod); 
 		}
 
 		void Start ()
@@ -68,11 +64,6 @@ namespace SpaceShooter
 			}
 		}
 
-		public int PointsByAsteriod {
-			get { return pointsByAsteriod; }
-			set { pointsByAsteriod = value; }
-		}
-
 		//-----------------------------------------------------------------------------
 		// Attributes
 		//-----------------------------------------------------------------------------
@@ -86,9 +77,6 @@ namespace SpaceShooter
 		[SerializeField]
 		private GameObject explosion;
 
-		[SerializeField]
-		private int pointsByAsteriod;
-
 		//-----------------------------------------------------------------------------
 		// Constructors
 		//-----------------------------------------------------------------------------
@@ -97,7 +85,6 @@ namespace SpaceShooter
 		{
 			tumble = 3;
 			speed = -4;
-			pointsByAsteriod = 10;
 		}
 	}
 }
